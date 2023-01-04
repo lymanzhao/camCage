@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (3, 00, 0),
     "localtion": "View3D > N",
-    "description":"自动创建环绕物体一周的摄影机，默认26个",
+    "description":"自动创建环绕物体一周的摄影机，默认42个",
     "category": "Camera",
 }
 
@@ -189,7 +189,7 @@ class Add_CamCage(bpy.types.Operator):
 
         Camera_cage_Empty.scale = (self.Size, self.Size, self.Size)
         Camera_cage_Empty.location = context.scene.cursor.location
-        
+
         return {'FINISHED'}
 
 
@@ -211,9 +211,9 @@ class Add_CamCage(bpy.types.Operator):
 #       obj = context.object
 
 #       col = layout.row()
-      
+
 #       col.operator(Add_CamCage.bl_idname, text="camCage", icon="VIEW_CAMERA")
-      
+
 
 def menu_func(self, context):
     self.layout.operator(Add_CamCage.bl_idname)
@@ -232,14 +232,14 @@ classes = [Add_CamCage]
 def register():
   for cls in classes:
     bpy.utils.register_class(cls)
-    bpy.types.VIEW3D_MT_add.append(menu_func) 
+    bpy.types.VIEW3D_MT_add.append(menu_func)
 
 
 
 def unregister():
   for cls in classes:
     bpy.utils.unregister_class(cls)
-  
+
 
 if __name__ == "__main__":
     register()
